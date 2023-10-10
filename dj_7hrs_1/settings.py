@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "corsheaders",  # အခြားနေရာက api data ခေါ်သုံးလို့ရအောင် python -m pip install django-cors-headers
 ]
 
+AUTH_USER_MODEL = 'base.User'
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 
@@ -116,9 +118,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
+MEDIA_URL = "/images/"
+
+# for css and js file
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# user uploaded picture
+MEDIA_ROOT = BASE_DIR / 'static/images'
 
 # STATIC_ROOT =
 
