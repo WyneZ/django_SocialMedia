@@ -44,15 +44,20 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
-
     "django.middleware.security.SecurityMiddleware",
+
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.security.SecurityMiddleware",  # to deploy
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # to deploy
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+
 ]
 
 ROOT_URLCONF = "dj_7hrs_1.urls"
@@ -128,7 +133,7 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # user uploaded picture
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
-# STATIC_ROOT =
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -136,3 +141,6 @@ MEDIA_ROOT = BASE_DIR / 'static/images'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'  # to deploy
+
